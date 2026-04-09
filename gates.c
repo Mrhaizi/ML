@@ -4,7 +4,6 @@
 #include <time.h>
 
 
-
 typedef float sample[3];
 sample or_train[] = {
     {0, 0, 0},
@@ -46,15 +45,16 @@ float cost(float w1, float w2, float b) {
     return result;
 }
 
+
 // XOR
 // (x|y) & ~(x&y)
 
 int main() {
-    // for (size_t x = 0; x < 2; x++) {
-    //     for (size_t y = 0; y < 2; y++) {
-    //         printf("%zu ~ %zu = %zu\n", x, y, ((x|y) & ~(x&y)));
-    //     }
-    // }
+    for (size_t x = 0; x < 2; x++) {
+        for (size_t y = 0; y < 2; y++) {
+            printf("%zu ~ %zu = %zu\n", x, y, ((x|y) & ~(x&y)));
+        }
+    }
     srand(69);
     float w1 = rand_float();
     float w2 = rand_float();
@@ -70,12 +70,10 @@ int main() {
         w1 -= rate * deps1;
         w2 -= rate * deps2;
         b  -= rate * db;
-        // if (i % 100 == 0) {
-            // printf("w1 = %f, w2 = %f, b = %f, result = %f\n", w1, w2, b, cost(w1, w2, b));
-        // }
+        if (i % 100 == 0) {
+            printf("w1 = %f, w2 = %f, b = %f, result = %f\n", w1, w2, b, cost(w1, w2, b));
+        }
     }
-    
-
 
     return 0;
 }
